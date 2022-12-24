@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', cast=bool)
+DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = []
 
@@ -100,9 +100,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # whitelist
 CORS_ORIGIN_WHITELIST = (
-    u'http://localhost:8888',
-    u'http://127.0.0.1:8000',
+    u'http://localhost:3000',
 )
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 
 #CORS_ORIGIN_WHITELIST = (
