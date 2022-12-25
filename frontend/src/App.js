@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import CustomModal from './componets/Modal';
+
 
 const tasks = [
   {
@@ -34,9 +36,9 @@ class App extends Component {
   }
   displayCompleted = status =>{
     if (status) {
-    return this.setstatus({viewCompleted: true});
+    return this.setState({viewCompleted: true});
     }
-    return this.setstatus({viewCompleted: false});
+    return this.setState({viewCompleted: false});
   }
 
   renderTabList = () => {
@@ -49,7 +51,7 @@ class App extends Component {
           Completed  
           </span>
         <span 
-          onClicj={() => this.displayCompleted(false)}
+          onClick={() => this.displayCompleted(false)}
           className={this.state.viewCompleted ? "": "active"}
           >
             Incompleted
